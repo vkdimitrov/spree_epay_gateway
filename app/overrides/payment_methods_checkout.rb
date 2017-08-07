@@ -25,6 +25,8 @@ Deface::Override.new(virtual_path: "spree/checkout/_payment",
                      '
                      <script>
                          var buttonName = $("input.btn.btn-lg.btn-success").val();
+                         var initialButton = $("#save-and-continue").html
+                         console.log(initialButton)
                          if($(".epaybg_method.pm_method").is(":checked")){
                            var linkName = $(".epay_link").text();
                            $(".btn.btn-lg.btn-success").replaceWith("<a class=\'epay_button_checkout btn btn-lg btn-success\' data-remote=\'true\' rel=\'nofollow\' data-method=\'post\' href=\'/order/checkout/epay\' style=\'border-radius: 0;\'>"+ linkName + "</a>");
