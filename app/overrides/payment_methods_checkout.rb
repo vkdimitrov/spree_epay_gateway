@@ -36,7 +36,7 @@ Deface::Override.new(virtual_path: "spree/checkout/_payment",
                              var linkName = $(".epay_link").text();
                              $(".btn.btn-lg.btn-success").replaceWith("<a class=\'epay_button_checkout btn btn-lg btn-success\' data-remote=\'true\' rel=\'nofollow\' data-method=\'post\' href=\'/order/checkout/epay\' style=\'border-radius: 0;\'>"+ linkName + "</a>");
                            } else {
-                             $(".epay_button_checkout").replaceWith("<input href=\'javascript:;\' name=\'commit\' value=\'" + buttonName + "\' class=\'btn btn-lg btn-success\' type=\'submit\'>");
+                             $(".epay_button_checkout").replaceWith("<a id=\"save-and-continue\" class=\"button primary hollow small-12\" href=\"javascript:;\">Запиши и продължи</a>");
                            }
                          });
                      </script>
