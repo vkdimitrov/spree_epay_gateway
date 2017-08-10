@@ -1,5 +1,4 @@
 class Spree::EpayController < Spree::StoreController
-  include EpayHelper
 
   def create
     @order = current_order
