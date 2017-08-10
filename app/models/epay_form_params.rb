@@ -1,7 +1,7 @@
 class EpayFormParams
   attr_reader :url_ok, :url_cancel
 
-  def initialize(params, return_url, cancel_url)
+  def initialize(params, order_number)
     @config = Spree::Gateway::EpayBg.where(type: 'Spree::Gateway::EpayBg', active: true).last.preferences
     @params = default_params.merge params
     @url_ok = return_url
@@ -28,6 +28,18 @@ class EpayFormParams
 
   def page
     'credit_paydirect'#'paylogin'#'credit_paydirect'
+  end
+
+  def store_url
+    store_url = Spree::Store.current.url.sub(/^\w+:\/\//, '')
+  end
+
+  def return_url(order_number)
+    "#{store_url}/orders/#{order_number}"
+  end
+
+  def cancel_url(order_number)
+    "#{store_url}/order/#{order_number}/epay/cancel")
   end
 
   def default_params

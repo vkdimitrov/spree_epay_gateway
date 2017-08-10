@@ -1,4 +1,6 @@
 class Spree::EpayController < Spree::StoreController
+  include EpayHelper
+
   def create
     @order = current_order
     ActiveRecord::Base.transaction do
@@ -15,7 +17,7 @@ class Spree::EpayController < Spree::StoreController
       amount: @order.total.to_f,
       exp_date: (Time.now + 1.week).strftime('%d.%m.%Y'),
       currency: 'BGN',
-    }, "#{Spree::Store.current.url}/orders/#{@order.number}", "#{Spree::Store.current.url}/order/#{@order.number}/epay/cancel")
+    }, @order.number)
 
     respond_to do |format|
       format.js
