@@ -39,7 +39,7 @@ class EpayFormParams
   end
 
   def cancel_url(order_number)
-    "#{store_url}/order/#{order_number}/epay/cancel")
+    "#{store_url}/order/#{order_number}/epay/cancel"
   end
 
   def default_params
