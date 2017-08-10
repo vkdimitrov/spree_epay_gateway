@@ -4,8 +4,8 @@ class EpayFormParams
   def initialize(params, order_number)
     @config = Spree::Gateway::EpayBg.where(type: 'Spree::Gateway::EpayBg', active: true).last.preferences
     @params = default_params.merge params
-    @url_ok = return_url
-    @url_cancel = cancel_url
+    @url_ok = return_url(order_number)
+    @url_cancel = cancel_url(order_number)
   end
 
   def [](key)
